@@ -1,6 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
-
+// candace
 /**
  * A program to carry on conversations with a human user.
  * This version:
@@ -40,7 +40,7 @@ public class ChatBot1
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "Hello, I'm Noodle. What do you want to talk about?";
 	}
 	
 	/**
@@ -61,7 +61,7 @@ public class ChatBot1
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Why so negative?";
+			response = "What are you saying no to?";
                 	emotion--;
 		}
 		
@@ -70,31 +70,42 @@ public class ChatBot1
 			response = "More like LevinTheDream, amiright?";
 			emotion++;
 		}
-		else if (findKeyword(statement, "folwell") >= 0)
+		else if ((findKeyword(statement, "birthday") >= 0)
+			&& (findKeyword(statement, "your")>=0))
 		{
-			response = "Watch your backpacks, Mr. Folwell doesn't fall well.";
+			response = "I think I was born on October 31, 1990. When's your birthday?";
 			emotion++;
 		}
-		else if (findKeyword(statement, "goldman") >= 0)
-		{
-			response = "Go for the gold, man.";
-			emotion++;
-		}
+
 
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
 		{
-			response = transformIWantToStatement(statement);
+			response = transformIWantToStatement(statement, "want");
 		}
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
-			response = transformIWantStatement(statement);
-		}	
+			response = transformIWantStatement(statement, "want");
+		}
+		else if ((findKeyword(statement, "I")>=0)
+			&& (findKeyword(statement, "you")>=2)) {
+			response = transformIYouStatement(statement);
+		}
+		else if (statement.trim().length()<=0)
+		{
+			response= "Excuse me can you speak louder?";
+		}
+
+		else if (findKeyword(statement, "ocean bacon") >= 0)
+		{
+		response = "Yikes, ummm... I can't remember anything... Who are you and what were we talking about?";
+		emotion=0;
+		}
 		else
 		{
-			response = getRandomResponse();
+		response = getRandomResponse();
 		}
-		
+
 		return response;
 	}
 	
@@ -104,7 +115,7 @@ public class ChatBot1
 	 * @param statement the user statement, assumed to contain "I want to"
 	 * @return the transformed statement
 	 */
-	private String transformIWantToStatement(String statement)
+	private String transformIWantToStatement(String statement, String word)
 	{
 		//  Remove the final period, if there is one
 		statement = statement.trim();
@@ -115,9 +126,9 @@ public class ChatBot1
 			statement = statement.substring(0, statement
 					.length() - 1);
 		}
-		int psn = findKeyword (statement, "I want to", 0);
+		int psn = findKeyword (statement, "I " + word+ " to", 0);
 		String restOfStatement = statement.substring(psn + 9).trim();
-		return "Why do you want to " + restOfStatement + "?";
+		return "Why do you " + word+ " to " + restOfStatement + "?";
 	}
 
 	
@@ -127,7 +138,7 @@ public class ChatBot1
 	 * @param statement the user statement, assumed to contain "I want"
 	 * @return the transformed statement
 	 */
-	private String transformIWantStatement(String statement)
+	private String transformIWantStatement(String statement, String word)
 	{
 		//  Remove the final period, if there is one
 		statement = statement.trim();
@@ -138,9 +149,9 @@ public class ChatBot1
 			statement = statement.substring(0, statement
 					.length() - 1);
 		}
-		int psn = findKeyword (statement, "I want", 0);
+		int psn = findKeyword (statement, "I" + word, 0);
 		String restOfStatement = statement.substring(psn + 6).trim();
-		return "Would you really be happy if you had " + restOfStatement + "?";
+		return "I'm guessing you'd be really happy if you had " + restOfStatement + "?";
 	}
 	
 	
@@ -277,7 +288,7 @@ public class ChatBot1
 			"So, would you like to go for a walk?",
 			"Could you say that again?"
 	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
+	private String [] randomAngryResponses = {"I really don;t understand why you'd say something as ignorant as that.", "Whatever.", "The rage consumes me!"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
 	
 }
