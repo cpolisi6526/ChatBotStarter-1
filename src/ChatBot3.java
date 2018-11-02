@@ -158,7 +158,7 @@ public class ChatBot3
 		int psnOfYou = findKeyword (statement, "you", psnOfI);
 		
 		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
-		return "Why do you " + restOfStatement + " me?";
+		return "Would you really be happy with " + restOfStatement + " me?";
 	}
 	
 

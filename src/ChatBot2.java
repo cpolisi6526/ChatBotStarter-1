@@ -80,7 +80,11 @@ public class ChatBot2
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
-		}	
+		}
+		else if (findKeyword(statement, "I Like",0) >= 0)
+		{
+			response = transformILikeStatement(statement);
+		}
 		else
 		{
 			response = getRandomResponse();
@@ -141,7 +145,7 @@ public class ChatBot2
 	 * @param statement the user statement, assumed to contain "I" followed by "you"
 	 * @return the transformed statement
 	 */
-	private String transformIYouStatement(String statement)
+	private String transformILikeStatement(String statement)
 	{
 		//  Remove the final period, if there is one
 		statement = statement.trim();
@@ -153,11 +157,9 @@ public class ChatBot2
 					.length() - 1);
 		}
 		
-		int psnOfI = findKeyword (statement, "I", 0);
-		int psnOfYou = findKeyword (statement, "you", psnOfI);
-		
-		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
-		return "Why do you " + restOfStatement + " me?";
+		int psn = findKeyword (statement, "I like", 0);
+		String restOfStatement = statement.substring(psn+6).trim();
+		return "Why do you " + restOfStatement + " it?";
 	}
 	
 
