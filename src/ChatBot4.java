@@ -42,7 +42,7 @@ public class ChatBot4
      */
     public String getGreeting()
     {
-        return "Hi, what is up?";
+        return "Ay-up, we got a new mate looking to talk I see. How's it going?";
     }
 
     /**
@@ -81,6 +81,10 @@ public class ChatBot4
         else if (findKeyword(statement, "I want",0) >= 0)
         {
             response = transformIWantStatement(statement);
+        }
+        else if (findKeyword(statement,"I love", 0)>= 0)
+        {
+            response = transformILoveStatement(statement);
         }
         else
         {
@@ -133,6 +137,19 @@ public class ChatBot4
         int psn = findKeyword (statement, "I want", 0);
         String restOfStatement = statement.substring(psn + 6).trim();
         return "Would you really be happy if you had " + restOfStatement + "?";
+    }
+
+    private String transformILoveStatement(String statement)
+    {
+        statement = statement.trim();
+        String lastChar = statement.substring(statement.length() - 1);
+        if (lastChar.equals("."))
+        {
+            statement = statement.substring(0,statement.length()-1);
+        }
+        int psn = findKeyword(statement,"I love", 0);
+        String restOfStatement = statement.substring(psn + 6).trim();
+        return "Why do you love " + restOfStatement + " mate?";
     }
 
 
