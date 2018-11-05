@@ -101,6 +101,7 @@ public class ChatBot1
 		response = "Yikes, ummm... I can't remember anything... Who are you and what were we talking about?";
 		emotion=0;
 		}
+		else if
 		else
 		{
 		response = getRandomResponse();
@@ -284,11 +285,61 @@ public class ChatBot1
 			"Hmmm.",
 			"Do you really think so?",
 			"You don't say.",
-			"It's all boolean to me.",
+			"Ahuh",
 			"So, would you like to go for a walk?",
-			"Could you say that again?"
+			"Could you say that again?",
+			"Cool"
 	};
 	private String [] randomAngryResponses = {"I really don;t understand why you'd say something as ignorant as that.", "Whatever.", "The rage consumes me!"};
-	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+	private String [] randomHappyResponses = {"That sounds amazing.", "I'm happy for you.", "That's good"};
+	private String [] songs= {"19-2000",
+			"Andromeda",
+			"Ascension",
+			"Broken ",
+			"Busted and Blue",
+			"Charger",
+			"Clint Eastwood",
+			"Cloud Of Unknowing",
+			"DARE",
+			"Dirty Harry",
+			"Doncamatic",
+			"DoYaThing",
+			"Empire Ants",
+			"Feel Good Inc.",
+			"Fire Coming Out Of The Monkey's Head",
+			"Garage Palace",
+			"Glitter Freeze",
+			"Hallelujah Money",
+			"Hollywood",
+			"Humility",
+			"Idaho",
+			"Left Hand Suzuki Method",
+			"Let Me Out",
+			"Momentz",
+			"On Melancholy Hill",
+			"Orchestral Intro",
+			"Phoner to Arizona",
+			"Pirate Jet",
+			"Plastic Beach",
+			"Revolving Doors",
+			"Rhinestone Eyes",
+			"Rock The House",
+			"Saturnz Barz",
+			"Sex Murder Party",
+			"She's My Collar",
+			"Some Kind Of Nature",
+			"Strobelite",
+			"Stylo",
+			"Superfast Jellyfish",
+			"Sweepstakes",
+			"Ticker Tape",
+			"To Binge",
+			"Tomorrow Comes Today",
+			"We Got The Power",
+			"Welcome To The World Of The Plastic Beach",
+			"Whirlwind",
+			"White Flag"
+	}
+
 	
 }
