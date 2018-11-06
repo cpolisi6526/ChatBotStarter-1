@@ -82,6 +82,22 @@ public class ChatBot2
 			response = "Yeah. I've always been Russel. What you thought I was someone else?";
 			emotion++;
 		}
+		else if (findKeyword(statement, "Murdoc") >= 0)
+		{
+			response = "Aah, Murdoc. He's a great dude. Check out his music. He's super talented, man!";
+			emotion++;
+		}
+		else if (findKeyword(statement, "2D") >= 0)
+		{
+			response = "2D is not a bad guy. He and I are alike. We understand each other.";
+			emotion++;
+		}
+		else if (findKeyword(statement, "Noodle") >= 0)
+		{
+			response = "Noodle is a good girl. I hope she continues to succeed and I'll be there for her in every step of the way!";
+			emotion++;
+		}
+
 
 
 		// Response transforming I want to statement
