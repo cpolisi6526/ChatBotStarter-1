@@ -41,7 +41,8 @@ public class ChatBot2
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+
+		return "Hey, It's Russel the drummer. What can I do for you?";
 	}
 	
 	/**
@@ -57,33 +58,44 @@ public class ChatBot2
 		
 		if (statement.length() == 0)
 		{
-			response = "Say something, please.";
+			response = "Say something, dude.";
 		}
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Why so negative?";
+			response = "Hey man, I don't want that kind of negativity here.";
                 	emotion--;
 		}
 		
-		else if (findKeyword(statement, "levin") >= 0)
+		else if (findKeyword(statement, "Go to sleep") >= 0)
 		{
-			response = "More like LevinTheDream amiright?";
+			response = "Yo, it's me. Del tha Ghost Rapper. Finally I can talk.";
 			emotion++;
 		}
+		else if (findKeyword(statement, "Wake up") >= 0)
+		{
+			response = "That was a great nap.";
+			emotion++;
+		}
+		else if (findKeyword(statement, "Are you Russel?") >= 0)
+		{
+			response = "Yeah. I've always been Russel. What you thought I was someone else?";
+			emotion++;
+		}
+
 
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
 		{
 			response = transformIWantToStatement(statement);
 		}
-		else if (findKeyword(statement, "I want",0) >= 0)
+		else if (findKeyword(statement, "I hate",0) >= 0)
 		{
-			response = transformIWantStatement(statement);
+			response = transformIhateStatement(statement);
 		}
-		else if (findKeyword(statement, "I Like",0) >= 0)
+		else if (findKeyword(statement, "I love",0) >= 0)
 		{
-			response = transformILikeStatement(statement);
+			response = transformIloveStatement(statement);
 		}
 		else
 		{
@@ -122,7 +134,7 @@ public class ChatBot2
 	 * @param statement the user statement, assumed to contain "I want"
 	 * @return the transformed statement
 	 */
-	private String transformIWantStatement(String statement)
+	private String transformIhateStatement(String statement)
 	{
 		//  Remove the final period, if there is one
 		statement = statement.trim();
@@ -133,9 +145,9 @@ public class ChatBot2
 			statement = statement.substring(0, statement
 					.length() - 1);
 		}
-		int psn = findKeyword (statement, "I want", 0);
+		int psn = findKeyword (statement, "I hate", 0);
 		String restOfStatement = statement.substring(psn + 6).trim();
-		return "Would you really be happy if you had " + restOfStatement + "?";
+		return "Why do you hate " + restOfStatement + "?";
 	}
 	
 	
@@ -145,7 +157,7 @@ public class ChatBot2
 	 * @param statement the user statement, assumed to contain "I" followed by "you"
 	 * @return the transformed statement
 	 */
-	private String transformILikeStatement(String statement)
+	private String transformIloveStatement(String statement)
 	{
 		//  Remove the final period, if there is one
 		statement = statement.trim();
@@ -159,7 +171,7 @@ public class ChatBot2
 		
 		int psn = findKeyword (statement, "I like", 0);
 		String restOfStatement = statement.substring(psn+6).trim();
-		return "Why do you " + restOfStatement + " it?";
+		return "I love " + restOfStatement + " too!! But I love hip hop more!";
 	}
 	
 
@@ -268,9 +280,10 @@ public class ChatBot2
 			"You don't say.",
 			"It's all boolean to me.",
 			"So, would you like to go for a walk?",
-			"Could you say that again?"
+			"Could you say that again?",
+			"I love Hip Hop!",
+			"Story time. I once put Noodle in my mouth to swim away from Pirates. Some dudes thought I was a whale and harpooned me. Luckily I escaped but Noodle wasn't as lucky. The end!"
 	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
+	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!","I miss my friends!","I promise, one day I'll take down the grim reaper!"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
-	
 }
