@@ -170,7 +170,7 @@ public class ChatBot1
 					response= songs[n] + " is a great song.";
 				}
 			}
-			emotion++
+			emotion++;
 		}
 		else if (findKeyword(statement, "ocean bacon") >= 0) {
 			response = "Yikes, ummm... I can't remember anything... Who are you and what were we talking about?";
