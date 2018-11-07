@@ -57,6 +57,7 @@ public class ChatBot1
 		if (statement.length() == 0)
 		{
 			response = "Say something, please.";
+			emotion--;
 		}
 
 
@@ -77,7 +78,17 @@ public class ChatBot1
 			response = "I think I was born on October 31, 1990. When's your birthday?";
 			emotion++;
 		}
-
+		else if (findKeyword(statement, "from")>=0){
+			response= "I'm from Japan, but our band is from England. Where are you from?";
+		}
+		else if (findKeyword(statement, "tour")>=0){
+			response= "We don't have any upcoming tours. But we will soon... maybe.";
+			emotion++;
+		}
+		else if (findKeyword(statement, "Mr. Kyuzo")>=0 || findKeyword(statement, "Japan")>=0 || findKeyword(statement, "soldier")>=0 || findKeyword(statement, "amnesia")>=0){
+			response= "I'd rather not talk about my past. Plus, my brain was wiped since then so I don't remember much anyways.";
+			emotion= 0;
+		}
 
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
@@ -98,64 +109,89 @@ public class ChatBot1
 		}
 		else if (statement.trim().length()<=0)
 		{
-			response= "Excuse me can you speak louder?";
+			if (emotion>0) {
+				response = "Excuse me can you speak louder?";
+			}
+			else{
+				response= "Dude, if you're not going to say anything switch chatbots.";
+			}
+			emotion--;
 		}
-		else if (statement.indexOf(songs[0])>=1
-				|| statement.indexOf(songs[1])>=1
-				|| statement.indexOf(songs[2])>=1
-				|| statement.indexOf(songs[3])>=1
-				|| statement.indexOf(songs[4])>=1
-				|| statement.indexOf(songs[5])>=1
-				||statement.indexOf(songs[6])>=1
-				|| statement.indexOf(songs[7])>=1
-				|| statement.indexOf(songs[8])>=1
-				|| statement.indexOf(songs[9])>=1
-				|| statement.indexOf(songs[10])>=1
-				|| statement.indexOf(songs[11])>=1
-				|| statement.indexOf(songs[12])>=1
-				|| statement.indexOf(songs[13])>=1
-				||statement.indexOf(songs[14])>=1
-				|| statement.indexOf(songs[15])>=1
-				|| statement.indexOf(songs[16])>=1
-				|| statement.indexOf(songs[17])>=1
-				|| statement.indexOf(songs[18])>=1
-				|| statement.indexOf(songs[19])>=1
-				|| statement.indexOf(songs[20])>=1
-				|| statement.indexOf(songs[21])>=1
-				||statement.indexOf(songs[22])>=1
-				|| statement.indexOf(songs[23])>=1
-				|| statement.indexOf(songs[24])>=1
-				|| statement.indexOf(songs[25])>=1
-				|| statement.indexOf(songs[26])>=1
-				|| statement.indexOf(songs[27])>=1
-				|| statement.indexOf(songs[28])>=1
-				|| statement.indexOf(songs[29])>=1
-				||statement.indexOf(songs[30])>=1
-				|| statement.indexOf(songs[31])>=1
-				|| statement.indexOf(songs[32])>=1
-				|| statement.indexOf(songs[33])>=1
-				|| statement.indexOf(songs[34])>=1
-				|| statement.indexOf(songs[35])>=1
-				|| statement.indexOf(songs[36])>=1
-				|| statement.indexOf(songs[37])>=1
-				||statement.indexOf(songs[38])>=1
-				|| statement.indexOf(songs[39])>=1
-				|| statement.indexOf(songs[40])>=1
-				|| statement.indexOf(songs[41])>=1
-				|| statement.indexOf(songs[42])>=1
-				|| statement.indexOf(songs[43])>=1
-				|| statement.indexOf(songs[44])>=1
-				|| statement.indexOf(songs[45])>=1
+
+		else if (statement.indexOf(songs[0])>=0
+				|| statement.indexOf(songs[1])>=0
+				|| statement.indexOf(songs[2])>=0
+				|| statement.indexOf(songs[3])>=0
+				|| statement.indexOf(songs[4])>=0
+				|| statement.indexOf(songs[5])>=0
+				||statement.indexOf(songs[6])>=0
+				|| statement.indexOf(songs[7])>=0
+				|| statement.indexOf(songs[8])>=0
+				|| statement.indexOf(songs[9])>=0
+				|| statement.indexOf(songs[10])>=0
+				|| statement.indexOf(songs[11])>=0
+				|| statement.indexOf(songs[12])>=0
+				|| statement.indexOf(songs[13])>=0
+				||statement.indexOf(songs[14])>=0
+				|| statement.indexOf(songs[15])>=0
+				|| statement.indexOf(songs[16])>=0
+				|| statement.indexOf(songs[17])>=0
+				|| statement.indexOf(songs[18])>=0
+				|| statement.indexOf(songs[19])>=0
+				|| statement.indexOf(songs[20])>=0
+				|| statement.indexOf(songs[21])>=0
+				||statement.indexOf(songs[22])>=0
+				|| statement.indexOf(songs[23])>=0
+				|| statement.indexOf(songs[24])>=0
+				|| statement.indexOf(songs[25])>=0
+				|| statement.indexOf(songs[26])>=0
+				|| statement.indexOf(songs[27])>=0
+				|| statement.indexOf(songs[28])>=0
+				|| statement.indexOf(songs[29])>=0
+				||statement.indexOf(songs[30])>=0
+				|| statement.indexOf(songs[31])>=0
+				|| statement.indexOf(songs[32])>=0
+				|| statement.indexOf(songs[33])>=0
+				|| statement.indexOf(songs[34])>=0
+				|| statement.indexOf(songs[35])>=0
+				|| statement.indexOf(songs[36])>=0
+				|| statement.indexOf(songs[37])>=0
+				||statement.indexOf(songs[38])>=0
+				|| statement.indexOf(songs[39])>=0
+				|| statement.indexOf(songs[40])>=0
+				|| statement.indexOf(songs[41])>=0
+				|| statement.indexOf(songs[42])>=0
+				|| statement.indexOf(songs[43])>=0
+				|| statement.indexOf(songs[44])>=0
+				|| statement.indexOf(songs[45])>=0
 		){
 			for (int n=0; songs.length>n; n++){
-				if (statement.indexOf(songs[n])>=1){
+				if (statement.indexOf(songs[n])>=0){
 					response= songs[n] + " is a great song.";
 				}
 			}
+			emotion++
 		}
 		else if (findKeyword(statement, "ocean bacon") >= 0) {
 			response = "Yikes, ummm... I can't remember anything... Who are you and what were we talking about?";
 			emotion = 0;
+		}
+		else if (findKeyword(statement, band[0])>=0){
+			response= "Murdock is a Numb Skull";
+			emotion--;
+		}
+		else if (findKeyword(statement,band[1])>=0){
+			response= "I'm kind of worried about 2-D. He's been living recklessly.";
+		}
+		else if (findKeyword(statement, band[2])>=0){
+			response= "He saved me once by eating me. It was weird.";
+			emotion++;
+		}
+		else if (findKeyword(statement, band [1])>=0
+		&& (findKeyword(statement,band[0])>=0 || findKeyword(statement, band[2])>=0)){
+			int ran= (int) (Math.random() * 2);
+			response= band[ran] + " is the best";
+			emotion++;
 		}
 		else
 		{
@@ -394,6 +430,7 @@ public class ChatBot1
 			"Whirlwind",
 			"White Flag"
 	};
+	private String[] band= {"Murdock", "2-D", "Russell"};
 
 }
 
