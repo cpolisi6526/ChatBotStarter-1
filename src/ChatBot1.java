@@ -59,6 +59,7 @@ public class ChatBot1
 			response = "Say something, please.";
 		}
 
+
 		else if (findKeyword(statement, "no") >= 0)
 		{
 			response = "What are you saying no to?";
@@ -87,6 +88,10 @@ public class ChatBot1
 		{
 			response = transformIWantStatement(statement, "want");
 		}
+		else if (findKeyword(statement, "I feel",0) >= 0)
+		{
+			response = transformIWantStatement(statement, "feel");
+		}
 		else if ((findKeyword(statement, "I")>=0)
 			&& (findKeyword(statement, "you")>=2)) {
 			response = transformIYouStatement(statement);
@@ -95,18 +100,37 @@ public class ChatBot1
 		{
 			response= "Excuse me can you speak louder?";
 		}
-
-		else if (findKeyword(statement, "ocean bacon") >= 0)
-		{
-		response = "Yikes, ummm... I can't remember anything... Who are you and what were we talking about?";
-		emotion=0;
+		else if (statement.indexOf(songs[0])>=1
+				|| statement.indexOf(songs[1])>=1
+				|| statement.indexOf(songs[2])>=1
+				|| statement.indexOf(songs[3])>=1
+				|| statement.indexOf(songs[4])>=1
+				|| statement.indexOf(songs[5])>=1
+				||statement.indexOf(songs[6])>=1
+				|| statement.indexOf(songs[7])>=1
+				|| statement.indexOf(songs[8])>=1
+				|| statement.indexOf(songs[9])>=1
+				|| statement.indexOf(songs[10])>=1
+				|| statement.indexOf(songs[11])>=1
+				|| statement.indexOf(songs[12])>=1
+				|| statement.indexOf(songs[13])>=1
+				||statement.indexOf(songs[14])>=1
+				|| statement.indexOf(songs[15])>=1
+		){
+			for (int n=0; songs.length>n; n++){
+				if (statement.indexOf(songs[n])>=1){
+					response= songs[n] + " is a great song.";
+				}
+			}
 		}
-		else if
+		else if (findKeyword(statement, "ocean bacon") >= 0) {
+			response = "Yikes, ummm... I can't remember anything... Who are you and what were we talking about?";
+			emotion = 0;
+		}
 		else
 		{
 		response = getRandomResponse();
 		}
-
 		return response;
 	}
 	
@@ -152,7 +176,7 @@ public class ChatBot1
 		}
 		int psn = findKeyword (statement, "I" + word, 0);
 		String restOfStatement = statement.substring(psn + 6).trim();
-		return "I'm guessing you'd be really happy if you had " + restOfStatement + "?";
+		return "Why do you seem to " + word + " " + restOfStatement + "?";
 	}
 	
 	
@@ -339,7 +363,7 @@ public class ChatBot1
 			"Welcome To The World Of The Plastic Beach",
 			"Whirlwind",
 			"White Flag"
-	}
+	};
 
-	
 }
+
