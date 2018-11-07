@@ -42,7 +42,7 @@ public class ChatBot3
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "Hey there, I knew you'd pick me mate.";
 	}
 	
 	/**
@@ -58,18 +58,23 @@ public class ChatBot3
 		
 		if (statement.length() == 0)
 		{
-			response = "Say something, please.";
+			if (emotion >= 0) {
+				response = "You know, you're supposed to use words an sentences.";
+			}
+			if (emotion <0) {
+				response = "I don't speak stupid.";
+			}
 		}
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Why so negative?";
+			response = "Aren't you a little ball of joy and sunshine?";
                 	emotion--;
 		}
 		
-		else if (findKeyword(statement, "levin") >= 0)
+		else if (findKeyword(statement, "life") >= 0)
 		{
-			response = "More like LevinTheDream amiright?";
+			response = "I'm taking a more optimistic approach to life, ever since that whole drowning in human waste incident, ya' know?";
 			emotion++;
 		}
 
@@ -86,6 +91,31 @@ public class ChatBot3
 		{
 			response = getRandomResponse();
 		}
+
+		else if (findKeyword(statement, "Noodle") >= 0)
+	{
+		response = "I owe Noodle a lot, can you believe she went to kill some made up criminal for me?";
+		emotion++;
+	}
+	else if (findKeyword(statement, "Russel") >= 0)
+	{
+		response = "i don't know what's wrong with him, he's been a bit off since I arrived.";
+	}
+	else if (findKeyword(statement, "2D") >= 0)
+	{
+		response = "The kid would be nothing without me, then again, his eyes would still work. You win some, you lose some, eh?";
+		emotion--;
+	}
+	else if (findKeyword(statement, "Gorillaz") >= 0)
+	{
+		response = "Ah, my pride and joy. It's come so far, and I ike to think it's all thanks to me.";
+		emotion = emotion + 2;
+	}
+	else if (findKeyword(statement, "Ace") >= 0)
+	{
+		response = "what's there to say, the man did his job, and now he's gone. He was just a place holder while I was gone, nothing more";
+		emotion--;
+	}
 		
 		return response;
 	}
@@ -109,7 +139,7 @@ public class ChatBot3
 		}
 		int psn = findKeyword (statement, "I want to", 0);
 		String restOfStatement = statement.substring(psn + 9).trim();
-		return "Why do you want to " + restOfStatement + "?";
+		return "Why the hell would you want to " + restOfStatement + "?";
 	}
 
 	
@@ -132,7 +162,7 @@ public class ChatBot3
 		}
 		int psn = findKeyword (statement, "I want", 0);
 		String restOfStatement = statement.substring(psn + 6).trim();
-		return "Would you really be happy if you had " + restOfStatement + "?";
+		return "Would your life really be complete if you had " + restOfStatement + "?";
 	}
 	
 	
@@ -261,15 +291,15 @@ public class ChatBot3
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
 	
-	private String [] randomNeutralResponses = {"Interesting, tell me more",
+	private String [] randomNeutralResponses = {"Interesting, but I don't want to hear more about it",
 			"Hmmm.",
-			"Do you really think so?",
+			"You sure about that mate?",
 			"You don't say.",
-			"It's all boolean to me.",
+			"You do you.",
 			"So, would you like to go for a walk?",
 			"Could you say that again?"
 	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+	private String [] randomAngryResponses = {"You sound like 2D", "Be more like Russ will you, go to sleep.", "I've been to prison before..."};
+	private String [] randomHappyResponses = {"I'm flattered!", "What's this I'm feeling, am I happy right now?", "You make me feel like a brand new pair of shoes."};
 	
 }
