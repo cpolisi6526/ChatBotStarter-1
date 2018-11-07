@@ -23,19 +23,19 @@ public class ChatBotRunner {
 		String statement = "";
 
 		while (!statement.equals("Bye")) {
-			if (picker.equals("a")) {
+			if (picker.equals("a") || (picker.equals("A"))) {
 				Noodle.chatLoop(statement);
 				statement = in.nextLine();
 			}
-			if (picker.equals("b")) {
+			if (picker.equals("b") || picker.equals("B")) {
 				chatbot2.chatLoop(statement);
 				statement = in.nextLine();
 			}
-			if (picker.equals("c")) {
+			if (picker.equals("c") || picker.equals("C")) {
 				chatbot3.chatLoop(statement);
 				statement = in.nextLine();
 			}
-			if (picker.equals("d")) {
+			if (picker.equals("d") || picker.equals("D")) {
 				chatbot4.chatLoop(statement);
 				statement = in.nextLine();
 			} else {

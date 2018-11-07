@@ -57,6 +57,7 @@ public class ChatBot1
 		if (statement.length() == 0)
 		{
 			response = "Say something, please.";
+			emotion--;
 		}
 
 
@@ -77,7 +78,17 @@ public class ChatBot1
 			response = "I think I was born on October 31, 1990. When's your birthday?";
 			emotion++;
 		}
-
+		else if (findKeyword(statement, "from")>=0){
+			response= "I'm from Japan, but our band is from England. Where are you from?";
+		}
+		else if (findKeyword(statement, "tour")>=0){
+			response= "We don't have any upcoming tours. But we will soon... maybe.";
+			emotion++;
+		}
+		else if (findKeyword(statement, "Mr. Kyuzo")>=0 || findKeyword(statement, "Japan")>=0 || findKeyword(statement, "soldier")>=0 || findKeyword(statement, "amnesia")>=0){
+			response= "I'd rather not talk about my past. Plus, my brain was wiped since then so I don't remember much anyways.";
+			emotion= 0;
+		}
 
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
@@ -98,8 +109,15 @@ public class ChatBot1
 		}
 		else if (statement.trim().length()<=0)
 		{
-			response= "Excuse me can you speak louder?";
+			if (emotion>0) {
+				response = "Excuse me can you speak louder?";
+			}
+			else{
+				response= "Dude, if you're not going to say anything switch chatbots.";
+			}
+			emotion--;
 		}
+
 		else if (statement.indexOf(songs[0])>=0
 				|| statement.indexOf(songs[1])>=0
 				|| statement.indexOf(songs[2])>=0
@@ -152,10 +170,28 @@ public class ChatBot1
 					response= songs[n] + " is a great song.";
 				}
 			}
+			emotion++
 		}
 		else if (findKeyword(statement, "ocean bacon") >= 0) {
 			response = "Yikes, ummm... I can't remember anything... Who are you and what were we talking about?";
 			emotion = 0;
+		}
+		else if (findKeyword(statement, band[0])>=0){
+			response= "Murdock is a Numb Skull";
+			emotion--;
+		}
+		else if (findKeyword(statement,band[1])>=0){
+			response= "I'm kind of worried about 2-D. He's been living recklessly.";
+		}
+		else if (findKeyword(statement, band[2])>=0){
+			response= "He saved me once by eating me. It was weird.";
+			emotion++;
+		}
+		else if (findKeyword(statement, band [1])>=0
+		&& (findKeyword(statement,band[0])>=0 || findKeyword(statement, band[2])>=0)){
+			int ran= (int) (Math.random() * 2);
+			response= band[ran] + " is the best";
+			emotion++;
 		}
 		else
 		{
@@ -394,6 +430,7 @@ public class ChatBot1
 			"Whirlwind",
 			"White Flag"
 	};
+	private String[] band= {"Murdock", "2-D", "Russell"};
 
 }
 
