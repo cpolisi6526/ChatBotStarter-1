@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class ChatBot4
 {
     //emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
-    int emotion = 0;
+    public int emotion = 3;
 
 
 
@@ -55,40 +55,211 @@ public class ChatBot4
     public String getResponse(String statement)
     {
         String response = "";
+        if (emotion > 0)
+        {
+            if (statement.length() == 0)
+            {
+                response = "Why don't just sit there. Say something.";
+            }
 
-        if (statement.length() == 0)
-        {
-            response = "Say something, please.";
+            else if (findKeyword(statement, "no") >= 0)
+            {
+                response = "Why so negative?";
+                emotion--;
+            }
+
+            else if (findKeyword(statement, "levin") >= 0)
+            {
+                response = "Who's that mate?";
+            }
+
+            else if (findKeyword(statement, "murdoc") >= 0)
+            {
+                response = "Oh... let's um... let's not chat about Murdoc please.";
+                emotion=0;
+            }
+
+            else if (findKeyword(statement, "noodle") >= 0)
+            {
+                response = "If you're talking about the food, I like it. If you're talking about my friend, I like it.";
+                emotion++;
+            }
+
+            else if (findKeyword(statement, "russel") >= 0)
+            {
+                response = "Mhm. My good mate Russel.";
+                emotion++;
+            }
+
+            else if (findKeyword(statement, "gorillaz") >= 0)
+            {
+                response = "Woohoo! You surely know who the best band is... Why the Gorillaz of course!";
+                emotion++;
+            }
+
+            else if (findKeyword(statement, "feel good inc") >= 0)
+            {
+                response = "That's my favorite song. You have a fantastic taste in music.";
+                emotion++;
+            }
+            else if (findKeyword(statement, "tranz") >= 0)
+            {
+                response = "Ah yes. Great song.";
+                emotion++;
+            }
+            else if (findKeyword(statement, "britain") >= 0)
+            {
+                response = "Why that's such a lovely place.";
+                emotion++;
+            }
+            else if (findKeyword(statement, "british") >= 0)
+            {
+                response = "British? I'm British!";
+                emotion++;
+            }
+            else if (findKeyword(statement, "buddhism") >= 0)
+            {
+                response = "I am a buddhist, mate. It is better to conquer yourself than to win a thousand battles.";
+                emotion++;
+            }
+            else if (findKeyword(statement, "tree") >= 0)
+            {
+                response = "Uhh, can we not talk about trees? I had a bad experience once.";
+                emotion=0;
+            }
+            else if (findKeyword(statement, "hello") >= 0)
+            {
+                response = "How are ya, mate?";
+            }
+            else if (findKeyword(statement, "hi") >= 0)
+            {
+                response = "Cheers, mate. How's it going?";
+            }
+            else if (findKeyword(statement, "cheers") >= 0)
+            {
+                response = "Cheers!";
+            }
+
+
+            // Response transforming I want to statement
+            else if (findKeyword(statement, "I want to", 0) >= 0)
+            {
+                response = transformIWantToStatement(statement);
+            }
+            else if (findKeyword(statement, "I want",0) >= 0)
+            {
+                response = transformIWantStatement(statement);
+            }
+            else if (findKeyword(statement,"I love", 0)>= 0)
+            {
+                response = transformILoveStatement(statement);
+            }
+            else
+            {
+                response = getRandomResponse();
+            }
         }
 
-        else if (findKeyword(statement, "no") >= 0)
+        else if (emotion <= 0)
         {
-            response = "Why so negative?";
-            emotion--;
-        }
+            if (statement.length() == 0)
+            {
+                response = "SAY SOMETHING MATE.";
+            }
 
-        else if (findKeyword(statement, "levin") >= 0)
-        {
-            response = "More like LevinTheDream amiright?";
-            emotion++;
-        }
+            else if (findKeyword(statement, "no") >= 0)
+            {
+                response = "Stop being so negative already.";
+                emotion--;
+            }
 
-        // Response transforming I want to statement
-        else if (findKeyword(statement, "I want to", 0) >= 0)
-        {
-            response = transformIWantToStatement(statement);
-        }
-        else if (findKeyword(statement, "I want",0) >= 0)
-        {
-            response = transformIWantStatement(statement);
-        }
-        else if (findKeyword(statement,"I love", 0)>= 0)
-        {
-            response = transformILoveStatement(statement);
-        }
-        else
-        {
-            response = getRandomResponse();
+            else if (findKeyword(statement, "levin") >= 0)
+            {
+                response = "Who are you even talking about?";
+            }
+
+            else if (findKeyword(statement, "murdoc") >= 0)
+            {
+                response = "NO. We're not talking about him.";
+                emotion--;
+            }
+
+            else if (findKeyword(statement, "noodle") >= 0)
+            {
+                response = "Thinking of her makes me feel a little better.";
+                emotion++;
+            }
+
+            else if (findKeyword(statement, "russel") >= 0)
+            {
+                response = "I'm still annoyed mate... but I feel a bit better thinking about him.";
+                emotion++;
+            }
+            else if (findKeyword(statement, "gorillaz") >= 0)
+            {
+                response = "That's my band! You surely know who the best band is...";
+                emotion++;
+            }
+            else if (findKeyword(statement, "feel good inc") >= 0)
+            {
+                response = "That's a good song, I guess. I could've done better, y'know.";
+                emotion++;
+            }
+            else if (findKeyword(statement, "tranz") >= 0)
+            {
+                response = "Nice song, I suppose.";
+                emotion++;
+            }
+            else if (findKeyword(statement, "britain") >= 0)
+            {
+                response = "Yes, that's my hometown.";
+                emotion++;
+            }
+            else if (findKeyword(statement, "british") >= 0)
+            {
+                response = "Eh, I'm British, mate.";
+                emotion++;
+            }
+            else if (findKeyword(statement, "buddhism") >= 0)
+            {
+                response = "That's my religion.";
+                emotion++;
+            }
+            else if (findKeyword(statement, "tree") >= 0)
+            {
+                response = "Look mate, I really don't want to hear about trees, okay?!";
+                emotion--;
+            }
+            else if (findKeyword(statement, "hello") >= 0)
+            {
+                response = "Hey.";
+            }
+            else if (findKeyword(statement, "hi") >= 0)
+            {
+                response = "Hi.";
+            }
+            else if (findKeyword(statement, "cheers") >= 0)
+            {
+                response = "Cheers.";
+            }
+
+            // Response transforming I want to statement
+            else if (findKeyword(statement, "I want to", 0) >= 0)
+            {
+                response = transformIWantToStatement(statement);
+            }
+            else if (findKeyword(statement, "I want",0) >= 0)
+            {
+                response = transformIWantStatement(statement);
+            }
+            else if (findKeyword(statement,"I love", 0)>= 0)
+            {
+                response = transformILoveStatement(statement);
+            }
+            else
+            {
+                response = getRandomResponse();
+            }
         }
 
         return response;
