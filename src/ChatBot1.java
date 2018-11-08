@@ -62,7 +62,7 @@ public class ChatBot1
 	 */	
 	public String getGreeting()
 	{
-		return "Hello, I'm Noodle. What do you want to talk about? Also if you want to talk to anyone else type a b or c at anytime.";
+		return "Hello, I'm Noodle. What do you want to talk about? Also if you want to talk to anyone else type a for Russel  b for Murdoc or c for 2-D at anytime.";
 	}
 	
 	/**
