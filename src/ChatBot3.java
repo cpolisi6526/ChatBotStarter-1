@@ -50,7 +50,7 @@ public class ChatBot3
 	 */	
 	public String getGreeting()
 	{
-		return "Hey there, I knew you'd pick me mate.";
+		return "Hey there, I knew you'd pick me mate. If I get too amazing for you, use a, b or d to talk to the others.";
 	}
 	
 	/**
@@ -72,6 +72,7 @@ public class ChatBot3
 			if (emotion <0) {
 				response = "I don't speak stupid.";
 			}
+			emotion--;
 		}
 
 		else if (findKeyword(statement, "no") >= 0)
