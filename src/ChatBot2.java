@@ -19,10 +19,11 @@ public class ChatBot2
 	 */
 	public void chatLoop(String statement)
 	{
-		Scanner in = new Scanner (System.in);
 		System.out.println (getGreeting());
-
-
+		Scanner in = new Scanner (System.in);
+		ChatBot1 Noodle = new ChatBot1();
+		ChatBot3 ChatBot3 = new ChatBot3();
+		ChatBot4 ChatBot4 = new ChatBot4();
 		while (!statement.equals("Bye"))
 		{
 
@@ -30,7 +31,15 @@ public class ChatBot2
 			statement = in.nextLine();
 			//getResponse handles the user reply
 			System.out.println(getResponse(statement));
-
+			if(statement.toLowerCase().equals("a")){
+				Noodle.chatLoop(statement);
+			}
+			if(statement.toLowerCase().equals("c")){
+				ChatBot3.chatLoop(statement);
+			}
+			if (statement.toLowerCase().equals("d")) {
+				ChatBot4.chatLoop(statement);
+			}
 
 		}
 
@@ -42,7 +51,7 @@ public class ChatBot2
 	public String getGreeting()
 	{
 
-		return "Hey, It's Russel the drummer. What can I do for you?";
+		return "Hey, It's Russel the drummer. You can switch to the other chatbots by typing a, c, or d at anytime. Now What can I do for you?";
 	}
 	
 	/**
@@ -52,49 +61,39 @@ public class ChatBot2
 	 *            the user statement
 	 * @return a response based on the rules given
 	 */
-	public String getResponse(String statement)
-	{
+	public String getResponse(String statement) {
 		String response = "";
-		
-		if (statement.length() == 0)
-		{
-			response = "Say something, dude.";
-		}
 
-		else if (findKeyword(statement, "no") >= 0)
-		{
+		if (statement.length() == 0) {
+			response = "Say something, dude.";
+		} else if (findKeyword(statement, "no") >= 0) {
 			response = "Hey man, I don't want that kind of negativity here.";
-                	emotion--;
-		}
-		
-		else if (findKeyword(statement, "Go to sleep") >= 0)
-		{
+			emotion--;
+		} else if (findKeyword(statement, "Go to sleep") >= 0) {
 			response = "Yo, it's me. Del tha Ghost Rapper. Finally I can talk.";
 			emotion++;
-		}
-		else if (findKeyword(statement, "Wake up") >= 0)
-		{
+		} else if (findKeyword(statement, "Wake up") >= 0) {
 			response = "That was a great nap.";
 			emotion++;
-		}
-		else if (findKeyword(statement, "Are you Russel?") >= 0)
-		{
+		} else if (findKeyword(statement, "Are you Russel?") >= 0) {
 			response = "Yeah. I've always been Russel. What you thought I was someone else?";
 			emotion++;
-		}
-		else if (findKeyword(statement, "Murdoc") >= 0)
-		{
+		} else if (findKeyword(statement, "Murdoc") >= 0) {
 			response = "Aah, Murdoc. He's a great dude. Check out his music. He's super talented, man!";
 			emotion++;
-		}
-		else if (findKeyword(statement, "2D") >= 0)
-		{
+		} else if (findKeyword(statement, "2D") >= 0) {
 			response = "2D is not a bad guy. He and I are alike. We understand each other.";
 			emotion++;
-		}
-		else if (findKeyword(statement, "Noodle") >= 0)
-		{
+		} else if (findKeyword(statement, "Noodle") >= 0) {
 			response = "Noodle is a good girl. I hope she continues to succeed and I'll be there for her in every step of the way!";
+			emotion++;
+		} else if (findKeyword(statement, "North Korea") >= 0) {
+			response = "Don't remind me of that time. Uggh!";
+			emotion--;
+		}
+		else if (findKeyword(statement, "you") >= 0) {
+			int ran= (int) (Math.random() * 3);
+			response= randomFactsRussel[ran];
 			emotion++;
 		}
 
@@ -301,5 +300,6 @@ public class ChatBot2
 			"Story time. I once put Noodle in my mouth to swim away from Pirates. Some dudes thought I was a whale and harpooned me. Luckily I escaped but Noodle wasn't as lucky. The end!"
 	};
 	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!","I miss my friends!","I promise, one day I'll take down the grim reaper!"};
-	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes.", "I love this band!"};
+	private String[] randomFactsRussel = {"My eyes are completely white because of the dead souls of my friends that possess me.","I was once taken to North Korea and I was their biggest attraction","North Koreans thought I was Godzilla","I once ate some radioactive fish and I grew large from that"};
 }

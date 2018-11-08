@@ -86,36 +86,35 @@ public class ChatBot3
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
-		}	
+		}
+		else if (findKeyword(statement, "Noodle") >= 0)
+		{
+			response = "I owe Noodle a lot, can you believe she went to kill some made up criminal for me?";
+			emotion++;
+		}
+		else if (findKeyword(statement, "Russel") >= 0)
+		{
+		response = "i don't know what's wrong with him, he's been a bit off since I arrived.";
+		}
+		else if (findKeyword(statement, "2D") >= 0)
+		{
+		response = "The kid would be nothing without me, then again, his eyes would still work. You win some, you lose some, eh?";
+		emotion--;
+		}
+		else if (findKeyword(statement, "Gorillaz") >= 0)
+		{
+		response = "Ah, my pride and joy. It's come so far, and I like to think it's all thanks to me.";
+		emotion = emotion + 2;
+		}
+		else if (findKeyword(statement, "Ace") >= 0)
+		{
+		response = "what's there to say, the man did his job, and now he's gone. He was just a place holder while I was gone, nothing more";
+		emotion--;
+		}
 		else
 		{
 			response = getRandomResponse();
 		}
-
-		else if (findKeyword(statement, "Noodle") >= 0)
-	{
-		response = "I owe Noodle a lot, can you believe she went to kill some made up criminal for me?";
-		emotion++;
-	}
-	else if (findKeyword(statement, "Russel") >= 0)
-	{
-		response = "i don't know what's wrong with him, he's been a bit off since I arrived.";
-	}
-	else if (findKeyword(statement, "2D") >= 0)
-	{
-		response = "The kid would be nothing without me, then again, his eyes would still work. You win some, you lose some, eh?";
-		emotion--;
-	}
-	else if (findKeyword(statement, "Gorillaz") >= 0)
-	{
-		response = "Ah, my pride and joy. It's come so far, and I ike to think it's all thanks to me.";
-		emotion = emotion + 2;
-	}
-	else if (findKeyword(statement, "Ace") >= 0)
-	{
-		response = "what's there to say, the man did his job, and now he's gone. He was just a place holder while I was gone, nothing more";
-		emotion--;
-	}
 		
 		return response;
 	}
