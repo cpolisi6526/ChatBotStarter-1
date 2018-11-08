@@ -22,8 +22,9 @@ public class ChatBot4
     {
         Scanner in = new Scanner (System.in);
         System.out.println (getGreeting());
-
-
+        ChatBot1 Noodle = new ChatBot1();
+        ChatBot3 ChatBot3 = new ChatBot3();
+        ChatBot2 ChatBot2 = new ChatBot2();
         while (!statement.equals("Bye"))
         {
 
@@ -31,7 +32,15 @@ public class ChatBot4
             statement = in.nextLine();
             //getResponse handles the user reply
             System.out.println(getResponse(statement));
-
+            if(statement.toLowerCase().equals("a")){
+                Noodle.chatLoop(statement);
+            }
+            if(statement.toLowerCase().equals("c")){
+                ChatBot3.chatLoop(statement);
+            }
+            if (statement.toLowerCase().equals("d")) {
+                ChatBot2.chatLoop(statement);
+            }
 
         }
 
@@ -42,7 +51,7 @@ public class ChatBot4
      */
     public String getGreeting()
     {
-        return "Ay-up, we got a new mate looking to talk I see. How's it going?";
+        return "Ay-up, we got a new mate looking to talk I see. How's it going? Also to switch bots type a b or c whenever.";
     }
 
     /**

@@ -22,8 +22,9 @@ public class ChatBot3
 	{
 		Scanner in = new Scanner (System.in);
 		System.out.println (getGreeting());
-
-
+		ChatBot1 Noodle = new ChatBot1();
+		ChatBot2 ChatBot2 = new ChatBot2();
+		ChatBot4 ChatBot4 = new ChatBot4();
 		while (!statement.equals("Bye"))
 		{
 
@@ -31,10 +32,17 @@ public class ChatBot3
 			statement = in.nextLine();
 			//getResponse handles the user reply
 			System.out.println(getResponse(statement));
-
+			if(statement.toLowerCase().equals("a")){
+				Noodle.chatLoop(statement);
+			}
+			if(statement.toLowerCase().equals("c")){
+				ChatBot2.chatLoop(statement);
+			}
+			if (statement.toLowerCase().equals("d")) {
+				ChatBot4.chatLoop(statement);
+			}
 
 		}
-
 	}
 	/**
 	 * Get a default greeting 	

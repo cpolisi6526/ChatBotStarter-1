@@ -26,6 +26,7 @@ public class ChatBotRunner {
 			if (picker.equals("a") || (picker.equals("A"))) {
 				Noodle.chatLoop(statement);
 				statement = in.nextLine();
+				System.out.println(Noodle.getResponse(statement));
 			}
 			if (picker.equals("b") || picker.equals("B")) {
 				chatbot2.chatLoop(statement);

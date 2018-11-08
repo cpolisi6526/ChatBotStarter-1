@@ -29,18 +29,40 @@ public class ChatBot1
 			statement = in.nextLine();
 			//getResponse handles the user reply
 			System.out.println(getResponse(statement));
+			ChatBot2 ChatBot2 = new ChatBot2();
+			ChatBot3 ChatBot3 = new ChatBot3();
+			ChatBot4 ChatBot4 = new ChatBot4();
+			while (!statement.equals("Bye"))
+			{
+
+
+				statement = in.nextLine();
+				//getResponse handles the user reply
+				System.out.println(getResponse(statement));
+				if(statement.toLowerCase().equals("a")){
+					ChatBot2.chatLoop(statement);
+				}
+				if(statement.toLowerCase().equals("c")){
+					ChatBot3.chatLoop(statement);
+				}
+				if (statement.toLowerCase().equals("d")) {
+					ChatBot4.chatLoop(statement);
+				}
+
+			}
+
+		}
 
 
 		}
 
-	}
 	/**
 	 * Get a default greeting 	
 	 * @return a greeting
 	 */	
 	public String getGreeting()
 	{
-		return "Hello, I'm Noodle. What do you want to talk about?";
+		return "Hello, I'm Noodle. What do you want to talk about? Also if you want to talk to anyone else type a b or c at anytime.";
 	}
 	
 	/**
@@ -78,8 +100,13 @@ public class ChatBot1
 			response = "I think I was born on October 31, 1990. When's your birthday?";
 			emotion++;
 		}
+		else if (findKeyword(statement, "gorillaz")>=0){
+			response= "gorillaz is the best band ever.";
+			emotion++;
+		}
 		else if (findKeyword(statement, "from")>=0){
 			response= "I'm from Japan, but our band is from England. Where are you from?";
+			emotion=0;
 		}
 		else if (findKeyword(statement, "tour")>=0){
 			response= "We don't have any upcoming tours. But we will soon... maybe.";
@@ -184,7 +211,7 @@ public class ChatBot1
 			response= "I'm kind of worried about 2-D. He's been living recklessly.";
 		}
 		else if (findKeyword(statement, band[2])>=0){
-			response= "He saved me once by eating me. It was weird.";
+			response= "Russell saved me once by eating me. It was weird.";
 			emotion++;
 		}
 		else if (findKeyword(statement, band [1])>=0
