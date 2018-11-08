@@ -101,7 +101,7 @@ public class ChatBot1
 			emotion++;
 		}
 		else if (findKeyword(statement, "gorillaz")>=0){
-			response= "gorillaz is the best band ever.";
+			response= "Gorillaz is the best band ever.";
 			emotion++;
 		}
 		else if (findKeyword(statement, "from")>=0){
@@ -204,14 +204,14 @@ public class ChatBot1
 			emotion = 0;
 		}
 		else if (findKeyword(statement, band[0])>=0){
-			response= "Murdock is a Numb Skull";
+			response= "Murdoc is a Numb Skull";
 			emotion--;
 		}
 		else if (findKeyword(statement,band[1])>=0){
 			response= "I'm kind of worried about 2-D. He's been living recklessly.";
 		}
 		else if (findKeyword(statement, band[2])>=0){
-			response= "Russell saved me once by eating me. It was weird.";
+			response= "Russel saved me once by eating me. It was weird.";
 			emotion++;
 		}
 		else if (findKeyword(statement, band [1])>=0
@@ -457,7 +457,7 @@ public class ChatBot1
 			"Whirlwind",
 			"White Flag"
 	};
-	private String[] band= {"Murdock", "2-D", "Russell"};
+	private String[] band= {"Murdoc", "2-D", "Russel"};
 
 }
 

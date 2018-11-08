@@ -18,7 +18,7 @@ public class ChatBotRunner {
 
 
 		Scanner in = new Scanner(System.in);
-		System.out.println("Welcome to the the Gorillaz Chatbox. Pick which band member you'd like to talk to. Type a for Noodle. Type b for Russell. Type c for Murdock. Type d 2-D.");
+		System.out.println("Welcome to the the Gorillaz Chatbox. Pick which band member you'd like to talk to. Type a for Noodle. Type b for Russel. Type c for Murdoc. Type d 2-D.");
 		String picker = in.nextLine();
 		String statement = "";
 
@@ -40,7 +40,7 @@ public class ChatBotRunner {
 				chatbot4.chatLoop(statement);
 				statement = in.nextLine();
 			} else {
-				System.out.println("That's not a valid response. Type a for Noodle, b for Russell, c for Murdock,d for 2-D");
+				System.out.println("That's not a valid response. Type a for Noodle, b for Russel, c for Murdoc,d for 2-D");
 				picker = in.nextLine();
 			}
 		}
