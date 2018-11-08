@@ -38,7 +38,7 @@ public class ChatBot3
 			if(statement.toLowerCase().equals("c")){
 				ChatBot2.chatLoop(statement);
 			}
-			if (statement.toLowerCase().equals("d")) {
+			if (statement.toLowerCase().equals("b")) {
 				ChatBot4.chatLoop(statement);
 			}
 
