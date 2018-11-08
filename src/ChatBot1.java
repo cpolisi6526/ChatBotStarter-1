@@ -42,10 +42,10 @@ public class ChatBot1
 				if(statement.toLowerCase().equals("a")){
 					ChatBot2.chatLoop(statement);
 				}
-				if(statement.toLowerCase().equals("c")){
+				if(statement.toLowerCase().equals("b")){
 					ChatBot3.chatLoop(statement);
 				}
-				if (statement.toLowerCase().equals("d")) {
+				if (statement.toLowerCase().equals("c")) {
 					ChatBot4.chatLoop(statement);
 				}
 
