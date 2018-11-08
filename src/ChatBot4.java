@@ -148,6 +148,10 @@ public class ChatBot4
             {
                 response = "Cheers!";
             }
+            else if (findKeyword(statement, "happy") >= 0)
+            {
+                response = "I'm quite happy, considering my music is top of the line mate.";
+            }
 
 
             // Response transforming I want to statement
@@ -250,6 +254,12 @@ public class ChatBot4
             else if (findKeyword(statement, "cheers") >= 0)
             {
                 response = "Cheers.";
+                emotion++;
+            }
+            else if (findKeyword(statement, "happy") >= 0)
+            {
+                response = "I'm not feeling so happy though...";
+                emotion++;
             }
 
             // Response transforming I want to statement
