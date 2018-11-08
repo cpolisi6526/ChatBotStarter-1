@@ -472,11 +472,11 @@ public class ChatBot4
             "Hmmm.",
             "Do you really think so?",
             "You don't say.",
-            "It's all boolean to me.",
+            "Cool",
             "So, would you like to go for a walk?",
             "Could you say that again?"
     };
     private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-    private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+    private String [] randomHappyResponses = {"Yeah, that's cool.", "Today is a good day", "Radical."};
 
 }
