@@ -1,6 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
-
+//Baishaki
 /**
  * A program to carry on conversations with a human user.
  * This version:
@@ -21,6 +21,7 @@ public class ChatBot2
 	{
 		System.out.println (getGreeting());
 		Scanner in = new Scanner (System.in);
+		//need to create new chatbots so that the user can switch to different chatbots during the conversation.
 		ChatBot1 Noodle = new ChatBot1();
 		ChatBot3 ChatBot3 = new ChatBot3();
 		ChatBot4 ChatBot4 = new ChatBot4();
@@ -31,6 +32,7 @@ public class ChatBot2
 			statement = in.nextLine();
 			//getResponse handles the user reply
 			System.out.println(getResponse(statement));
+			//These if statements check to see if these letters are pressed the user can switch to different chatbots
 			if(statement.toLowerCase().equals("a")){
 				Noodle.chatLoop(statement);
 			}
@@ -50,7 +52,7 @@ public class ChatBot2
 	 */	
 	public String getGreeting()
 	{
-
+		//This is the first greeting, also tells the user how to switch to another chatbot
 		return "Hey, It's Russel the drummer. You can switch to the other chatbots by typing a, c, or d at anytime. Now What can I do for you?";
 	}
 	
@@ -63,7 +65,7 @@ public class ChatBot2
 	 */
 	public String getResponse(String statement) {
 		String response = "";
-
+		//these are the specialized statements to specific user input
 		if (statement.length() == 0) {
 			response = "Say something, dude.";
 		} else if (findKeyword(statement, "no") >= 0) {
@@ -91,6 +93,7 @@ public class ChatBot2
 			response = "Don't remind me of that time. Uggh!";
 			emotion--;
 		}
+		//uses the randomfactsrussel array to give random resoponse when the user types the word you somewhere in there sentence
 		else if (findKeyword(statement, "you") >= 0) {
 			int ran= (int) (Math.random() * 3);
 			response= randomFactsRussel[ran];
@@ -100,6 +103,7 @@ public class ChatBot2
 
 
 		// Response transforming I want to statement
+		//special specialized statements that will check for specific format of user input
 		else if (findKeyword(statement, "I want to", 0) >= 0)
 		{
 			response = transformIWantToStatement(statement);
@@ -301,5 +305,6 @@ public class ChatBot2
 	};
 	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!","I miss my friends!","I promise, one day I'll take down the grim reaper!"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes.", "I love this band!"};
+	//added a new array that tells different facts about russel
 	private String[] randomFactsRussel = {"My eyes are completely white because of the dead souls of my friends that possess me.","I was once taken to North Korea and I was their biggest attraction","North Koreans thought I was Godzilla","I once ate some radioactive fish and I grew large from that"};
 }

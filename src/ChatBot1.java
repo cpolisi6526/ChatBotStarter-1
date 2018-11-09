@@ -35,7 +35,7 @@ public class ChatBot1
 			while (!statement.equals("Bye"))
 			{
 
-
+/// allows user to change chatbox during run
 				statement = in.nextLine();
 				//getResponse handles the user reply
 				System.out.println(getResponse(statement));
@@ -75,11 +75,17 @@ public class ChatBot1
 	public String getResponse(String statement)
 	{
 		String response = "";
-		
+		// if user doesnt say anything depending on emotion will respond differently
 		if (statement.length() == 0)
 		{
-			response = "Say something, please.";
-			emotion--;
+			if (emotion==0){
+				response = "Say something, please.";
+				emotion--;
+			}
+			else{
+				response= "Try asking about Japan or ocean bacon";
+			}
+
 		}
 
 
@@ -109,7 +115,12 @@ public class ChatBot1
 			emotion=0;
 		}
 		else if (findKeyword(statement, "tour")>=0){
-			response= "We don't have any upcoming tours. But we will soon... maybe.";
+			if (emotion>=0) {
+				response= "We don't have any upcoming tours. But we will soon... maybe.";
+			}
+			else{
+				response= "If you were a true fan you'd know";
+			}
 			emotion++;
 		}
 		else if (findKeyword(statement, "Mr. Kyuzo")>=0 || findKeyword(statement, "Japan")>=0 || findKeyword(statement, "soldier")>=0 || findKeyword(statement, "amnesia")>=0){
@@ -140,11 +151,15 @@ public class ChatBot1
 				response = "Excuse me can you speak louder?";
 			}
 			else{
-				response= "Dude, if you're not going to say anything switch chatbots.";
+				response= "Dude, if you're not going to say anything switch chatbots with a b or c.";
 			}
 			emotion--;
 		}
-
+		/// if user asks ab emotion it will tell user what it is
+		else if (findKeyword(statement,"emotion")>=0){
+			response= "My emotion right now is at " + emotion + ".";
+		}
+/// list of all songs
 		else if (statement.indexOf(songs[0])>=0
 				|| statement.indexOf(songs[1])>=0
 				|| statement.indexOf(songs[2])>=0
@@ -192,6 +207,7 @@ public class ChatBot1
 				|| statement.indexOf(songs[44])>=0
 				|| statement.indexOf(songs[45])>=0
 		){
+			/// comments on any song thats in the list
 			for (int n=0; songs.length>n; n++){
 				if (statement.indexOf(songs[n])>=0){
 					response= songs[n] + " is a great song.";
@@ -199,6 +215,7 @@ public class ChatBot1
 			}
 			emotion++;
 		}
+		/// ocean bacon is her trigger phrase irl
 		else if (findKeyword(statement, "ocean bacon") >= 0) {
 			response = "Yikes, ummm... I can't remember anything... Who are you and what were we talking about?";
 			emotion = 0;
@@ -214,6 +231,7 @@ public class ChatBot1
 			response= "Russel saved me once by eating me. It was weird.";
 			emotion++;
 		}
+		/// picks random band member to favorite
 		else if (findKeyword(statement, band [1])>=0
 		&& (findKeyword(statement,band[0])>=0 || findKeyword(statement, band[2])>=0)){
 			int ran= (int) (Math.random() * 2);
@@ -246,7 +264,7 @@ public class ChatBot1
 		}
 		int psn = findKeyword (statement, "I " + word+ " to", 0);
 		String restOfStatement = statement.substring(psn + 9).trim();
-		return "Why do you " + word+ " to " + restOfStatement + "?";
+		return "Sure.... you " + word+ " to " + restOfStatement + "?";
 	}
 
 	
@@ -269,7 +287,7 @@ public class ChatBot1
 		}
 		int psn = findKeyword (statement, "I" + word, 0);
 		String restOfStatement = statement.substring(psn + 6).trim();
-		return "Why do you seem to " + word + " " + restOfStatement + "?";
+		return "I don't see why you would " + word + " " + restOfStatement + "?";
 	}
 	
 	
@@ -295,7 +313,7 @@ public class ChatBot1
 		int psnOfYou = findKeyword (statement, "you", psnOfI);
 		
 		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
-		return "Why do you " + restOfStatement + " me?";
+		return "I don't understand why you would " + restOfStatement + " me?";
 	}
 	
 
