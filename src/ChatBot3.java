@@ -50,7 +50,7 @@ public class ChatBot3
 	 */	
 	public String getGreeting()
 	{
-		return "Hey there, I knew you'd pick me mate. If I get too amazing for you, use a, b or d to talk to the others";
+		return "Hey there, I knew you'd pick me mate. If I get too amazing for you, use a, b or c to talk to the others";
 	}
 	
 	/**
