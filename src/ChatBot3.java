@@ -175,8 +175,8 @@ public class ChatBot3
 	
 	
 	/**
-	 * Take a statement with "I <something> you" and transform it into 
-	 * "Why do you <something> me?"
+	 * Take a statement with "I <something> you" and transform it into
+	 * "Mate' do you really <something> me?"
 	 * @param statement the user statement, assumed to contain "I" followed by "you"
 	 * @return the transformed statement
 	 */
@@ -196,7 +196,7 @@ public class ChatBot3
 		int psnOfYou = findKeyword (statement, "you", psnOfI);
 		
 		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
-		return "Would you really be happy with " + restOfStatement + " me?";
+		return "Mate, do you really " + restOfStatement + " me?"; //outputs the final transformed statement.
 	}
 	
 
