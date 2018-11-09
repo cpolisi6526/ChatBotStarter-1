@@ -6,6 +6,7 @@ import java.util.Scanner;
  * This version:
  * @author Brooklyn Tech CS Department
  * @version September 2018
+ * Created by Ryan McGovern
  */
 public class ChatBot4
 {
@@ -64,8 +65,11 @@ public class ChatBot4
     public String getResponse(String statement)
     {
         String response = "";
+
         if (emotion > 0)
         {
+            // If 2-D is happy, the following statements will show
+
             if (statement.length() == 0)
             {
                 response = "Why don't just sit there. Say something.";
@@ -175,6 +179,8 @@ public class ChatBot4
 
         else if (emotion <= 0)
         {
+            // If 2-D is annoyed or sad, the following statements will show
+
             if (statement.length() == 0)
             {
                 response = "SAY SOMETHING MATE.";
@@ -331,6 +337,8 @@ public class ChatBot4
 
     private String transformILoveStatement(String statement)
     {
+        // Removes the final period, if there is one, and transforms the statement into a question
+
         statement = statement.trim();
         String lastChar = statement.substring(statement.length() - 1);
         if (lastChar.equals("."))
@@ -456,6 +464,8 @@ public class ChatBot4
      */
     private String getRandomResponse ()
     {
+        // Chooses which array to get a random response from based on emotion.
+
         Random r = new Random ();
         if (emotion == 0)
         {
