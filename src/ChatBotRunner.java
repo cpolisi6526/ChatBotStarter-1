@@ -4,6 +4,7 @@ import java.util.Scanner;
  * A simple class to run our chatbot teams.
  * @author Brooklyn Tech CS Department
  * @version September 2018
+ * Created by Ryan McGovern, Baishaki Debi, Candace Polisi, and Umar Mahmood
  */
 public class ChatBotRunner {
 
