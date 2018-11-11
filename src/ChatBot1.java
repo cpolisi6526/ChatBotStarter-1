@@ -87,7 +87,9 @@ public class ChatBot1
 			}
 
 		}
-
+		else if (findKeyword(statement, "hi")>=0){
+			response= "Hello, what do you want to talk about?";
+	}
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
